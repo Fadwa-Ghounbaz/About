@@ -1,0 +1,318 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+.ppage{font-family:'DM Sans',sans-serif;background:#1a1a2e;color:#fff;}
+.pheader{background:linear-gradient(135deg,#12122a 0%,#1e1e3a 100%);border-bottom:1px solid rgba(200,169,110,0.2);padding:22px 36px;display:flex;align-items:center;gap:16px;}
+.back-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(200,169,110,0.35);background:rgba(200,169,110,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.2s;}
+.back-btn:hover{background:rgba(200,169,110,0.2);}
+.back-btn svg{width:16px;height:16px;}
+.hdr-info{flex:1;}
+.hdr-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;}
+.hdr-title span{color:#c8a96e;}
+.hdr-sub{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;}
+.lang-bar{display:flex;gap:6px;}
+.lang-btn{padding:4px 13px;border-radius:20px;font-size:11px;font-weight:500;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);background:transparent;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
+.lang-btn.active{background:#c8a96e;border-color:#c8a96e;color:#1a1a2e;}
+.lang-btn:hover:not(.active){border-color:#c8a96e;color:#c8a96e;}
+
+/* STATS */
+.stats-bar{display:flex;gap:1px;background:rgba(200,169,110,0.1);border-bottom:1px solid rgba(200,169,110,0.12);}
+.stat{flex:1;padding:14px 10px;text-align:center;background:#1a1a2e;}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#c8a96e;}
+.stat-lbl{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.06em;margin-top:2px;}
+
+/* BODY */
+.pbody{padding:28px 36px;max-width:960px;margin:0 auto;}
+.sec-hdr{display:flex;align-items:center;gap:10px;margin-bottom:24px;}
+.sec-icon{width:32px;height:32px;border-radius:8px;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sec-icon svg{width:15px;height:15px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff;}
+.sec-title span{color:#c8a96e;}
+.gold-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(200,169,110,0.3),transparent);}
+
+/* PROJECT CARD */
+.proj-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;margin-bottom:28px;transition:border-color 0.3s;}
+.proj-card:hover{border-color:rgba(200,169,110,0.25);}
+
+/* TOP BAND */
+.proj-top{background:linear-gradient(135deg,rgba(200,169,110,0.1) 0%,rgba(200,169,110,0.03) 100%);border-bottom:1px solid rgba(200,169,110,0.15);padding:20px 24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+.proj-number{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:rgba(200,169,110,0.15);line-height:1;flex-shrink:0;}
+.proj-header{flex:1;}
+.proj-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3;}
+.proj-meta{display:flex;flex-wrap:wrap;gap:8px;}
+.proj-tag{display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(255,255,255,0.55);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:4px 10px;border-radius:20px;}
+.proj-tag svg{width:11px;height:11px;opacity:0.7;}
+.proj-tag.gold{background:rgba(200,169,110,0.1);border-color:rgba(200,169,110,0.25);color:#c8a96e;}
+
+/* CONTENT */
+.proj-content{padding:20px 24px;display:grid;grid-template-columns:1fr 1.1fr;gap:24px;align-items:start;}
+
+/* DESCRIPTION */
+.proj-desc-wrap{}
+.desc-title{font-size:11px;letter-spacing:0.1em;color:#c8a96e;text-transform:uppercase;font-weight:500;margin-bottom:12px;}
+.proj-desc{font-size:13px;line-height:1.8;color:rgba(255,255,255,0.65);margin-bottom:16px;}
+.tasks-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:7px;}
+.tasks-list li{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5;}
+.task-dot{width:18px;height:18px;border-radius:50%;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.task-dot svg{width:9px;height:9px;}
+
+/* GALLERY */
+.proj-gallery{}
+.gallery-title{font-size:11px;letter-spacing:0.1em;color:#c8a96e;text-transform:uppercase;font-weight:500;margin-bottom:10px;}
+.thumb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.thumb{width:100%;height:130px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);cursor:pointer;position:relative;background:#12122a;display:flex;align-items:center;justify-content:center;transition:all 0.25s;}
+.thumb:hover{border-color:rgba(200,169,110,0.5);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.4);}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 0.3s;}
+.thumb:hover img{transform:scale(1.06);}
+.thumb-overlay{position:absolute;inset:0;background:rgba(26,26,46,0.4);opacity:0;transition:opacity 0.2s;display:flex;align-items:center;justify-content:center;}
+.thumb:hover .thumb-overlay{opacity:1;}
+.thumb-overlay svg{width:22px;height:22px;}
+.t-spinner{width:18px;height:18px;border:2px solid rgba(200,169,110,0.15);border-top-color:#c8a96e;border-radius:50%;animation:spin 0.9s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(8,8,18,0.97);z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
+.lightbox.open{display:flex;}
+.lb-close{position:absolute;top:14px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#fff;transition:all 0.2s;}
+.lb-close:hover{background:rgba(200,169,110,0.2);border-color:#c8a96e;}
+.lb-img-wrap{max-width:90vw;max-height:80vh;}
+.lb-img-wrap img{max-width:100%;max-height:80vh;border-radius:8px;border:1px solid rgba(200,169,110,0.2);display:block;}
+.lb-nav{display:flex;gap:16px;margin-top:16px;align-items:center;}
+.lb-btn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(200,169,110,0.35);background:rgba(200,169,110,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;}
+.lb-btn:hover{background:rgba(200,169,110,0.25);}
+.lb-btn svg{width:18px;height:18px;}
+.lb-counter{font-size:13px;color:rgba(255,255,255,0.5);min-width:60px;text-align:center;}
+.lb-counter span{color:#c8a96e;font-weight:500;}
+.lb-proj-name{font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px;letter-spacing:0.05em;}
+</style>
+
+<div class="ppage">
+
+<!-- HEADER -->
+<div class="pheader">
+  <button class="back-btn"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></button>
+  <div class="hdr-info">
+    <div class="hdr-title" id="hdr-t">Pro<span>jekte</span></div>
+    <div class="hdr-sub" id="hdr-s">FADWA GHOUNBAZ · Bauprojekte & Praxiserfahrung</div>
+  </div>
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('de',this)">DE</button>
+    <button class="lang-btn" onclick="setLang('en',this)">EN</button>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">2</div><div class="stat-lbl" id="st1">Projekte</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-lbl" id="st2">Fotos</div></div>
+  <div class="stat"><div class="stat-num">478</div><div class="stat-lbl" id="st3">m² Gesamt</div></div>
+  <div class="stat"><div class="stat-num">5+</div><div class="stat-lbl" id="st4">Jahre Erfahrung</div></div>
+</div>
+
+<!-- BODY -->
+<div class="pbody">
+  <div class="sec-hdr">
+    <div class="sec-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.6" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div>
+    <div class="sec-title" id="sec-t">Abgeschlossene <span>Projekte</span></div>
+    <div class="gold-rule"></div>
+  </div>
+
+  <!-- PROJECT 1 -->
+  <div class="proj-card">
+    <div class="proj-top">
+      <div class="proj-header">
+        <div class="proj-name" id="p1-name">Bau einer zweistöckigen Villa</div>
+        <div class="proj-meta">
+          <div class="proj-tag"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg><span>Casablanca</span></div>
+          <div class="proj-tag"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>2023</span></div>
+          <div class="proj-tag gold"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-.293.707L13 15.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-5.586L4.293 7.707A1 1 0 014 7V5z"/></svg><span>240 m²</span></div>
+          <div class="proj-tag"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16"/><path d="M3 21h18M9 21V9h6v12"/></svg><span id="p1-type">Villa · 2 Etagen</span></div>
+        </div>
+      </div>
+      <div class="proj-number">01</div>
+    </div>
+    <div class="proj-content">
+      <div class="proj-desc-wrap">
+        <div class="desc-title" id="p1-dt">Projektbeschreibung</div>
+        <div class="proj-desc" id="p1-desc">In diesem Projekt habe ich in Zusammenarbeit mit einem Ingenieur gearbeitet und mehrere verantwortungsvolle Aufgaben übernommen.</div>
+        <ul class="tasks-list" id="p1-tasks">
+          <li><div class="task-dot"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Planung der Baustelle</span></li>
+          <li><div class="task-dot"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Organisation und Einrichtung der Baustelle</span></li>
+          <li><div class="task-dot"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Erstellung von detaillierten Mengenermittlungen und Aufmaßen</span></li>
+          <li><div class="task-dot"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Lesen und Analyse von Bauplänen</span></li>
+          <li><div class="task-dot"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Anwendung der Regeln und Normen für Stahlbeton</span></li>
+        </ul>
+      </div>
+      <div class="proj-gallery">
+        <div class="gallery-title" id="p1-gt">Projektfotos</div>
+        <div class="thumb-grid" id="tg1"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 2 -->
+  <div class="proj-card">
+    <div class="proj-top">
+      <div class="proj-header">
+        <div class="proj-name" id="p2-name">Bau eines Gebäudes (Keller, EG + 3 Etagen)</div>
+        <div class="proj-meta">
+          <div class="proj-tag"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg><span>Rabat</span></div>
+          <div class="proj-tag"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>2025</span></div>
+          <div class="proj-tag gold"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-.293.707L13 15.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-5.586L4.293 7.707A1 1 0 014 7V5z"/></svg><span>238 m²</span></div>
+          <div class="proj-tag"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16"/><path d="M3 21h18M9 21V9h6v12"/></svg><span id="p2-type">Gebäude · 5 Ebenen</span></div>
+        </div>
+      </div>
+      <div class="proj-number">02</div>
+    </div>
+    <div class="proj-content">
+      <div class="proj-desc-wrap">
+        <div class="desc-title" id="p2-dt">Projektbeschreibung</div>
+        <div class="proj-desc" id="p2-desc">Dieses Projekt war meine erste praktische Erfahrung auf einer Baustelle. Ich konnte viele Aspekte der Baupraxis kennenlernen und die theoretischen Kenntnisse in der Realität anwenden.</div>
+        <ul class="tasks-list" id="p2-tasks">
+          <li><div class="task-dot"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Kennenlernen der Baupraxis und des Bauprozesses</span></li>
+          <li><div class="task-dot"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Anwendung theoretischer Kenntnisse in der Praxis</span></li>
+          <li><div class="task-dot"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Zusammenarbeit mit erfahrenen Ingenieuren und Architekten</span></li>
+          <li><div class="task-dot"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>Einblicke in Keller- und Geschossbau gewinnen</span></li>
+        </ul>
+      </div>
+      <div class="proj-gallery">
+        <div class="gallery-title" id="p2-gt">Projektfotos</div>
+        <div class="thumb-grid" id="tg2"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lb">
+  <div class="lb-close" onclick="closeLb()">✕</div>
+  <div class="lb-img-wrap"><img id="lb-img" src="" alt="Projekt"/></div>
+  <div class="lb-nav">
+    <button class="lb-btn" onclick="lbNav(-1)"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></button>
+    <div class="lb-counter"><span id="lb-cur">1</span> / <span id="lb-tot">4</span></div>
+    <button class="lb-btn" onclick="lbNav(1)"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="lb-proj-name" id="lb-pname"></div>
+</div>
+
+<script>
+const projects=[
+  {
+    imgs:[
+      "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/WhatsApp%20Image%202026-03-16%20at%2000.59.32%20(1).jpeg",
+      "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/WhatsApp%20Image%202026-03-16%20at%2000.59.32.jpeg",
+      "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/WhatsApp%20Image%202026-03-16%20at%2000.59.33%20(1).jpeg",
+      "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/WhatsApp%20Image%202026-03-16%20at%2000.59.33.jpeg"
+    ],
+    name:{de:'Bau einer zweistöckigen Villa',en:'Construction of a Two-Story Villa'}
+  },
+  {
+    imgs:[
+      "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/WhatsApp%20Image%202026-03-16%20at%2001.06.03%20(1).jpeg",
+      "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/WhatsApp%20Image%202026-03-16%20at%2001.06.03%20(2).jpeg",
+      "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/WhatsApp%20Image%202026-03-16%20at%2001.06.03%20(3).jpeg",
+      "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/WhatsApp%20Image%202026-03-16%20at%2001.06.03.jpeg"
+    ],
+    name:{de:'Bau eines Gebäudes (Keller, EG + 3 Etagen)',en:'Construction of a Building (Basement, GF + 3 Floors)'}
+  }
+];
+
+let lbImgs=[], lbIdx=0, lbName='';
+
+function buildThumbGrid(gridId, projIdx){
+  const grid=document.getElementById(gridId);
+  grid.innerHTML='';
+  projects[projIdx].imgs.forEach((src,i)=>{
+    const div=document.createElement('div');
+    div.className='thumb';
+    div.innerHTML='<div class="t-spinner"></div>';
+    grid.appendChild(div);
+    const img=new Image();
+    img.onload=()=>{
+      div.innerHTML=`<img src="${src}" alt="Foto ${i+1}"><div class="thumb-overlay"><svg fill="none" stroke="#c8a96e" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div>`;
+      div.onclick=()=>openLb(projIdx,i);
+    };
+    img.onerror=()=>{
+      div.innerHTML=`<span style="font-size:10px;color:rgba(200,169,110,0.5);text-align:center;padding:6px;">Foto ${i+1}</span>`;
+      div.onclick=()=>openLb(projIdx,i);
+    };
+    img.src=src;
+  });
+}
+
+function openLb(projIdx,imgIdx){
+  lbImgs=projects[projIdx].imgs;
+  lbIdx=imgIdx;
+  lbName=projects[projIdx].name[currentLang]||projects[projIdx].name.de;
+  document.getElementById('lb-img').src=lbImgs[lbIdx];
+  document.getElementById('lb-cur').textContent=lbIdx+1;
+  document.getElementById('lb-tot').textContent=lbImgs.length;
+  document.getElementById('lb-pname').textContent=lbName;
+  document.getElementById('lb').classList.add('open');
+}
+function closeLb(){document.getElementById('lb').classList.remove('open');}
+function lbNav(dir){
+  lbIdx=(lbIdx+dir+lbImgs.length)%lbImgs.length;
+  document.getElementById('lb-img').src=lbImgs[lbIdx];
+  document.getElementById('lb-cur').textContent=lbIdx+1;
+}
+document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)closeLb();});
+
+let currentLang='de';
+const T={
+  de:{
+    hdr:'Pro<span style="color:#c8a96e">jekte</span>',sub:'FADWA GHOUNBAZ · Bauprojekte & Praxiserfahrung',
+    st1:'Projekte',st2:'Fotos',st3:'m² Gesamt',st4:'Jahre Erfahrung',
+    sect:'Abgeschlossene <span style="color:#c8a96e">Projekte</span>',
+    p1n:'Bau einer zweistöckigen Villa',p1type:'Villa · 2 Etagen',p1dt:'Projektbeschreibung',p1gt:'Projektfotos',
+    p1desc:'In diesem Projekt habe ich in Zusammenarbeit mit einem Ingenieur gearbeitet und mehrere verantwortungsvolle Aufgaben übernommen.',
+    p1tasks:['Planung der Baustelle','Organisation und Einrichtung der Baustelle','Erstellung von detaillierten Mengenermittlungen und Aufmaßen','Lesen und Analyse von Bauplänen','Anwendung der Regeln und Normen für Stahlbeton'],
+    p2n:'Bau eines Gebäudes (Keller, EG + 3 Etagen)',p2type:'Gebäude · 5 Ebenen',p2dt:'Projektbeschreibung',p2gt:'Projektfotos',
+    p2desc:'Dieses Projekt war meine erste praktische Erfahrung auf einer Baustelle. Ich konnte viele Aspekte der Baupraxis kennenlernen und die theoretischen Kenntnisse in der Realität anwenden.',
+    p2tasks:['Kennenlernen der Baupraxis und des Bauprozesses','Anwendung theoretischer Kenntnisse in der Praxis','Zusammenarbeit mit erfahrenen Ingenieuren und Architekten','Einblicke in Keller- und Geschossbau gewinnen']
+  },
+  en:{
+    hdr:'Pro<span style="color:#c8a96e">jects</span>',sub:'FADWA GHOUNBAZ · Construction Projects & Practical Experience',
+    st1:'Projects',st2:'Photos',st3:'m² Total',st4:'Years Experience',
+    sect:'Completed <span style="color:#c8a96e">Projects</span>',
+    p1n:'Construction of a Two-Story Villa',p1type:'Villa · 2 Floors',p1dt:'Project Description',p1gt:'Project Photos',
+    p1desc:'In this project I worked in collaboration with an engineer, taking on several key responsibilities.',
+    p1tasks:['Construction site planning','Site organisation and setup','Creating detailed quantity surveys and measurements','Reading and analysing construction drawings','Applying reinforced concrete rules and standards'],
+    p2n:'Construction of a Building (Basement, GF + 3 Floors)',p2type:'Building · 5 Levels',p2dt:'Project Description',p2gt:'Project Photos',
+    p2desc:'This project was my first hands-on experience on a construction site. I gained deep insight into construction practice and applied theoretical knowledge in a real-world context.',
+    p2tasks:['Learning construction practice and processes','Applying theoretical knowledge in practice','Collaborating with experienced engineers and architects','Gaining insight into basement and floor construction']
+  }
+};
+
+function setLang(lang,btn){
+  currentLang=lang;
+  const d=T[lang];
+  document.getElementById('hdr-t').innerHTML=d.hdr;
+  document.getElementById('hdr-s').textContent=d.sub;
+  document.getElementById('st1').textContent=d.st1;
+  document.getElementById('st2').textContent=d.st2;
+  document.getElementById('st3').textContent=d.st3;
+  document.getElementById('st4').textContent=d.st4;
+  document.getElementById('sec-t').innerHTML=d.sect;
+  document.getElementById('p1-name').textContent=d.p1n;
+  document.getElementById('p1-type').textContent=d.p1type;
+  document.getElementById('p1-dt').textContent=d.p1dt;
+  document.getElementById('p1-gt').textContent=d.p1gt;
+  document.getElementById('p1-desc').textContent=d.p1desc;
+  document.getElementById('p1-tasks').innerHTML=d.p1tasks.map(t=>`<li><div class="task-dot"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>${t}</span></li>`).join('');
+  document.getElementById('p2-name').textContent=d.p2n;
+  document.getElementById('p2-type').textContent=d.p2type;
+  document.getElementById('p2-dt').textContent=d.p2dt;
+  document.getElementById('p2-gt').textContent=d.p2gt;
+  document.getElementById('p2-desc').textContent=d.p2desc;
+  document.getElementById('p2-tasks').innerHTML=d.p2tasks.map(t=>`<li><div class="task-dot"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><span>${t}</span></li>`).join('');
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+buildThumbGrid('tg1',0);
+buildThumbGrid('tg2',1);
+</script>

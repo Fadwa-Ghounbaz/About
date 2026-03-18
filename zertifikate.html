@@ -1,0 +1,232 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+.zpage{font-family:'DM Sans',sans-serif;background:#1a1a2e;color:#fff;}
+.zheader{background:linear-gradient(135deg,#12122a 0%,#1e1e3a 100%);border-bottom:1px solid rgba(200,169,110,0.2);padding:22px 36px;display:flex;align-items:center;gap:16px;}
+.back-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(200,169,110,0.35);background:rgba(200,169,110,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+.back-btn svg{width:16px;height:16px;}
+.hdr-info{flex:1;}
+.hdr-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;}
+.hdr-title span{color:#c8a96e;}
+.hdr-sub{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;}
+.lang-bar{display:flex;gap:6px;}
+.lang-btn{padding:4px 13px;border-radius:20px;font-size:11px;font-weight:500;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);background:transparent;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
+.lang-btn.active{background:#c8a96e;border-color:#c8a96e;color:#1a1a2e;}
+.lang-btn:hover:not(.active){border-color:#c8a96e;color:#c8a96e;}
+.stats-bar{display:flex;gap:1px;background:rgba(200,169,110,0.1);border-bottom:1px solid rgba(200,169,110,0.12);}
+.stat{flex:1;padding:14px 10px;text-align:center;background:#1a1a2e;}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#c8a96e;}
+.stat-lbl{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.06em;margin-top:2px;}
+.zbody{padding:28px 36px;max-width:960px;margin:0 auto;}
+.sec-hdr{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.sec-icon{width:32px;height:32px;border-radius:8px;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sec-icon svg{width:15px;height:15px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff;}
+.sec-title span{color:#c8a96e;}
+.gold-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(200,169,110,0.3),transparent);}
+.cert-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px;}
+.cert-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px 18px;transition:border-color 0.2s;}
+.cert-card:hover{border-color:rgba(200,169,110,0.3);}
+.cc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;gap:8px;}
+.cc-org{font-size:13px;font-weight:500;color:#fff;line-height:1.4;}
+.cc-period{font-size:10px;color:#c8a96e;background:rgba(200,169,110,0.1);padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.cc-type{font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:10px;font-style:italic;}
+.cc-badges{display:flex;flex-wrap:wrap;gap:6px;}
+.cc-badge{font-size:11px;padding:4px 10px;border-radius:10px;background:rgba(200,169,110,0.1);color:#c8a96e;border:1px solid rgba(200,169,110,0.22);}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:100%;}
+.g-item{
+  width:100%;
+  height:190px;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.07);
+  cursor:pointer;
+  background:#12122a;
+  position:relative;
+  transition:all 0.25s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.g-item:hover{border-color:rgba(200,169,110,0.55);transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.5);}
+.g-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;}
+.g-item:hover img{transform:scale(1.05);transition:transform 0.3s;}
+.g-overlay{position:absolute;bottom:0;left:0;right:0;padding:8px 10px;background:linear-gradient(to top,rgba(15,15,30,0.92),transparent);opacity:0;transition:opacity 0.2s;}
+.g-item:hover .g-overlay{opacity:1;}
+.g-num{font-size:11px;color:#c8a96e;font-weight:500;}
+.g-spinner{width:22px;height:22px;border:2px solid rgba(200,169,110,0.15);border-top-color:#c8a96e;border-radius:50%;animation:spin 0.9s linear infinite;position:relative;z-index:1;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(8,8,18,0.97);z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
+.lightbox.open{display:flex;}
+.lb-close{position:absolute;top:14px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#fff;transition:all 0.2s;}
+.lb-close:hover{background:rgba(200,169,110,0.2);border-color:#c8a96e;}
+.lb-img-wrap{max-width:90vw;max-height:80vh;display:flex;align-items:center;justify-content:center;}
+.lb-img-wrap img{max-width:100%;max-height:80vh;border-radius:8px;border:1px solid rgba(200,169,110,0.2);display:block;}
+.lb-nav{display:flex;gap:16px;margin-top:16px;align-items:center;}
+.lb-btn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(200,169,110,0.35);background:rgba(200,169,110,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;}
+.lb-btn:hover{background:rgba(200,169,110,0.25);}
+.lb-btn svg{width:18px;height:18px;}
+.lb-counter{font-size:13px;color:rgba(255,255,255,0.5);min-width:64px;text-align:center;}
+.lb-counter span{color:#c8a96e;font-weight:500;}
+</style>
+
+<div class="zpage">
+<div class="zheader">
+  <button class="back-btn"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></button>
+  <div class="hdr-info">
+    <div class="hdr-title" id="hdr-t">Zertifi<span>kate</span></div>
+    <div class="hdr-sub" id="hdr-s">FADWA GHOUNBAZ · Sprachzertifikate & Weiterbildung</div>
+  </div>
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('de',this)">DE</button>
+    <button class="lang-btn" onclick="setLang('en',this)">EN</button>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">4</div><div class="stat-lbl" id="st1">Sprachen</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-lbl" id="st2">Zertifikate</div></div>
+  <div class="stat"><div class="stat-num">13</div><div class="stat-lbl" id="st3">Dokumente</div></div>
+  <div class="stat"><div class="stat-num">B2</div><div class="stat-lbl" id="st4">Höchstes Niveau</div></div>
+</div>
+
+<div class="zbody">
+  <div class="sec-hdr">
+    <div class="sec-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.6" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div>
+    <div class="sec-title" id="s-certs">Erlangte <span>Zertifikate</span></div>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="cert-cards">
+    <div class="cert-card">
+      <div class="cc-top"><div class="cc-org">Elite-Institut – Deutsches Premium-Sprachzentrum</div><div class="cc-period">06/2023–12/2024</div></div>
+      <div class="cc-type" id="cc1t">Deutschkurs · Casablanca</div>
+      <div class="cc-badges"><span class="cc-badge">Telc B2</span><span class="cc-badge">ÖSD B1</span><span class="cc-badge">Goethe B1</span></div>
+    </div>
+    <div class="cert-card">
+      <div class="cc-top"><div class="cc-org">Koreanisches Gemeindezentrum</div><div class="cc-period">02/2025</div></div>
+      <div class="cc-type" id="cc2t">Französischkurs · Casablanca</div>
+      <div class="cc-badges"><span class="cc-badge">Français A2</span></div>
+    </div>
+    <div class="cert-card">
+      <div class="cc-top"><div class="cc-org">Goethe-Institut</div><div class="cc-period">04/2024</div></div>
+      <div class="cc-type" id="cc3t">Schreiben & Sprechen</div>
+      <div class="cc-badges"><span class="cc-badge">Goethe-Zertifikat B1</span></div>
+    </div>
+    <div class="cert-card">
+      <div class="cc-top"><div class="cc-org">ÖSD – Österreichisches Sprachdiplom</div><div class="cc-period">09/2024</div></div>
+      <div class="cc-type" id="cc4t">Sprechen · Schreiben · Hören · Lesen</div>
+      <div class="cc-badges"><span class="cc-badge">ÖSD-Zertifikat B1</span></div>
+    </div>
+  </div>
+
+  <div class="sec-hdr">
+    <div class="sec-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.6" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+    <div class="sec-title" id="s-docs">Alle Dokumente — <span>13 Nachweise</span></div>
+    <div class="gold-rule"></div>
+  </div>
+
+  <div class="gallery-grid" id="gallery">
+    <div class="g-item" id="gi0"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi1"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi2"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi3"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi4"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi5"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi6"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi7"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi8"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi9"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi10"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi11"><div class="g-spinner"></div></div>
+    <div class="g-item" id="gi12"><div class="g-spinner"></div></div>
+  </div>
+</div>
+
+<div class="lightbox" id="lb">
+  <div class="lb-close" onclick="closeLb()">✕</div>
+  <div class="lb-img-wrap"><img id="lb-img" src="" alt="Zertifikat"/></div>
+  <div class="lb-nav">
+    <button class="lb-btn" onclick="lbNav(-1)"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></button>
+    <div class="lb-counter"><span id="lb-cur">1</span> / <span id="lb-tot">13</span></div>
+    <button class="lb-btn" onclick="lbNav(1)"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</div>
+</div>
+
+<script>
+const imgs=[
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/1.png",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/2.png",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/3.png",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/4.png",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/5.png",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/6.png",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/7.png",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/8.png",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/9.jpg",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/10.jpg",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/11.jpg",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/12.jpg",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/13.jpg"
+];
+
+let lbIdx=0;
+
+imgs.forEach((src,i)=>{
+  const cell=document.getElementById('gi'+i);
+  const img=new Image();
+  img.crossOrigin='anonymous';
+  img.onload=()=>{
+    cell.innerHTML='<img src="'+src+'" alt="Dok '+(i+1)+'"><div class="g-overlay"><span class="g-num">'+String(i+1).padStart(2,'0')+' / 13</span></div>';
+    cell.onclick=()=>openLb(i);
+  };
+  img.onerror=()=>{
+    cell.innerHTML='<span style="font-size:10px;color:rgba(200,169,110,0.5);text-align:center;padding:8px;">'+(i+1)+'.png</span>';
+    cell.onclick=()=>openLb(i);
+  };
+  img.src=src;
+});
+
+function openLb(i){
+  lbIdx=i;
+  document.getElementById('lb-img').src=imgs[i];
+  document.getElementById('lb-cur').textContent=i+1;
+  document.getElementById('lb-tot').textContent=imgs.length;
+  document.getElementById('lb').classList.add('open');
+}
+function closeLb(){document.getElementById('lb').classList.remove('open');}
+function lbNav(dir){
+  lbIdx=(lbIdx+dir+imgs.length)%imgs.length;
+  document.getElementById('lb-img').src=imgs[lbIdx];
+  document.getElementById('lb-cur').textContent=lbIdx+1;
+}
+document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)closeLb();});
+
+const T={
+  de:{hdr:'Zertifi<span style="color:#c8a96e">kate</span>',sub:'FADWA GHOUNBAZ · Sprachzertifikate & Weiterbildung',st1:'Sprachen',st2:'Zertifikate',st3:'Dokumente',st4:'Höchstes Niveau',sc:'Erlangte <span style="color:#c8a96e">Zertifikate</span>',sd:'Alle Dokumente — <span style="color:#c8a96e">13 Nachweise</span>',cc1:'Deutschkurs · Casablanca',cc2:'Französischkurs · Casablanca',cc3:'Schreiben & Sprechen',cc4:'Sprechen · Schreiben · Hören · Lesen'},
+  en:{hdr:'Certifi<span style="color:#c8a96e">cates</span>',sub:'FADWA GHOUNBAZ · Language Certificates & Training',st1:'Languages',st2:'Certificates',st3:'Documents',st4:'Highest Level',sc:'Obtained <span style="color:#c8a96e">Certificates</span>',sd:'All Documents — <span style="color:#c8a96e">13 Proofs</span>',cc1:'German Course · Casablanca',cc2:'French Course · Casablanca',cc3:'Writing & Speaking',cc4:'Speaking · Writing · Listening · Reading'}
+};
+function setLang(lang,btn){
+  const d=T[lang];
+  document.getElementById('hdr-t').innerHTML=d.hdr;
+  document.getElementById('hdr-s').textContent=d.sub;
+  document.getElementById('st1').textContent=d.st1;
+  document.getElementById('st2').textContent=d.st2;
+  document.getElementById('st3').textContent=d.st3;
+  document.getElementById('st4').textContent=d.st4;
+  document.getElementById('s-certs').innerHTML=d.sc;
+  document.getElementById('s-docs').innerHTML=d.sd;
+  document.getElementById('cc1t').textContent=d.cc1;
+  document.getElementById('cc2t').textContent=d.cc2;
+  document.getElementById('cc3t').textContent=d.cc3;
+  document.getElementById('cc4t').textContent=d.cc4;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>

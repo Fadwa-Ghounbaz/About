@@ -1,0 +1,218 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+.fpage{font-family:'DM Sans',sans-serif;background:#1a1a2e;color:#fff;}
+.fheader{background:linear-gradient(135deg,#12122a 0%,#1e1e3a 100%);border-bottom:1px solid rgba(200,169,110,0.2);padding:22px 36px;display:flex;align-items:center;gap:16px;}
+.back-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(200,169,110,0.35);background:rgba(200,169,110,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.2s;}
+.back-btn:hover{background:rgba(200,169,110,0.2);}
+.back-btn svg{width:16px;height:16px;}
+.hdr-info{flex:1;}
+.hdr-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;}
+.hdr-title span{color:#c8a96e;}
+.hdr-sub{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;}
+.lang-bar{display:flex;gap:6px;}
+.lang-btn{padding:4px 13px;border-radius:20px;font-size:11px;font-weight:500;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);background:transparent;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
+.lang-btn.active{background:#c8a96e;border-color:#c8a96e;color:#1a1a2e;}
+.lang-btn:hover:not(.active){border-color:#c8a96e;color:#c8a96e;}
+
+/* STATS */
+.stats-bar{display:flex;gap:1px;background:rgba(200,169,110,0.1);border-bottom:1px solid rgba(200,169,110,0.12);}
+.stat{flex:1;padding:14px 10px;text-align:center;background:#1a1a2e;}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#c8a96e;}
+.stat-lbl{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.06em;margin-top:2px;}
+
+/* BODY */
+.fbody{padding:28px 36px;max-width:960px;margin:0 auto;}
+.sec-hdr{display:flex;align-items:center;gap:10px;margin-bottom:24px;}
+.sec-icon{width:32px;height:32px;border-radius:8px;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sec-icon svg{width:15px;height:15px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff;}
+.sec-title span{color:#c8a96e;}
+.gold-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(200,169,110,0.3),transparent);}
+
+/* MASONRY-STYLE GRID */
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:auto;
+  gap:12px;
+}
+/* Big featured photo top-left */
+.photo-item{
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.07);
+  cursor:pointer;
+  position:relative;
+  background:#12122a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all 0.28s;
+}
+.photo-item:hover{border-color:rgba(200,169,110,0.55);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.5);}
+.photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.35s;}
+.photo-item:hover img{transform:scale(1.06);}
+.photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,15,30,0.85) 0%,transparent 55%);opacity:0;transition:opacity 0.25s;display:flex;align-items:flex-end;padding:14px;}
+.photo-item:hover .photo-overlay{opacity:1;}
+.photo-num{font-size:11px;color:#c8a96e;font-weight:500;letter-spacing:0.06em;}
+.zoom-icon{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.3);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;}
+.photo-item:hover .zoom-icon{opacity:1;}
+.zoom-icon svg{width:13px;height:13px;}
+.p-spinner{width:22px;height:22px;border:2px solid rgba(200,169,110,0.15);border-top-color:#c8a96e;border-radius:50%;animation:spin 0.9s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* GRID LAYOUT — varied heights for elegant look */
+.pi-0{grid-column:1;grid-row:1;height:280px;}
+.pi-1{grid-column:2;grid-row:1;height:280px;}
+.pi-2{grid-column:3;grid-row:1;height:280px;}
+.pi-3{grid-column:1;grid-row:2;height:240px;}
+.pi-4{grid-column:2;grid-row:2;height:240px;}
+.pi-5{grid-column:3;grid-row:2;height:240px;}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(8,8,18,0.97);z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
+.lightbox.open{display:flex;}
+.lb-close{position:absolute;top:14px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#fff;transition:all 0.2s;}
+.lb-close:hover{background:rgba(200,169,110,0.2);border-color:#c8a96e;}
+.lb-img-wrap{max-width:90vw;max-height:80vh;}
+.lb-img-wrap img{max-width:100%;max-height:80vh;border-radius:10px;border:1px solid rgba(200,169,110,0.2);display:block;}
+.lb-nav{display:flex;gap:16px;margin-top:16px;align-items:center;}
+.lb-btn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(200,169,110,0.35);background:rgba(200,169,110,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;}
+.lb-btn:hover{background:rgba(200,169,110,0.25);}
+.lb-btn svg{width:18px;height:18px;}
+.lb-counter{font-size:13px;color:rgba(255,255,255,0.5);min-width:60px;text-align:center;}
+.lb-counter span{color:#c8a96e;font-weight:500;}
+.lb-dots{display:flex;gap:6px;margin-top:12px;}
+.lb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;transition:all 0.2s;}
+.lb-dot.active{background:#c8a96e;transform:scale(1.3);}
+</style>
+
+<div class="fpage">
+
+<!-- HEADER -->
+<div class="fheader">
+  <button class="back-btn"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></button>
+  <div class="hdr-info">
+    <div class="hdr-title" id="hdr-t">Fo<span>tos</span></div>
+    <div class="hdr-sub" id="hdr-s">FADWA GHOUNBAZ · Persönliche Fotos</div>
+  </div>
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('de',this)">DE</button>
+    <button class="lang-btn" onclick="setLang('en',this)">EN</button>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">6</div><div class="stat-lbl" id="st1">Fotos</div></div>
+  <div class="stat"><div class="stat-num">1</div><div class="stat-lbl" id="st2">Album</div></div>
+  <div class="stat"><div class="stat-num">2026</div><div class="stat-lbl" id="st3">Jahr</div></div>
+  <div class="stat"><div class="stat-num">HD</div><div class="stat-lbl" id="st4">Qualität</div></div>
+</div>
+
+<!-- BODY -->
+<div class="fbody">
+  <div class="sec-hdr">
+    <div class="sec-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.6" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+    <div class="sec-title" id="sec-t">Persönliche <span>Galerie</span></div>
+    <div class="gold-rule"></div>
+  </div>
+
+  <div class="photo-grid" id="photo-grid">
+    <div class="photo-item pi-0" id="ph0"><div class="p-spinner"></div></div>
+    <div class="photo-item pi-1" id="ph1"><div class="p-spinner"></div></div>
+    <div class="photo-item pi-2" id="ph2"><div class="p-spinner"></div></div>
+    <div class="photo-item pi-3" id="ph3"><div class="p-spinner"></div></div>
+    <div class="photo-item pi-4" id="ph4"><div class="p-spinner"></div></div>
+    <div class="photo-item pi-5" id="ph5"><div class="p-spinner"></div></div>
+  </div>
+</div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lb">
+  <div class="lb-close" onclick="closeLb()">✕</div>
+  <div class="lb-img-wrap"><img id="lb-img" src="" alt="Foto"/></div>
+  <div class="lb-nav">
+    <button class="lb-btn" onclick="lbNav(-1)"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></button>
+    <div class="lb-counter"><span id="lb-cur">1</span> / <span id="lb-tot">6</span></div>
+    <button class="lb-btn" onclick="lbNav(1)"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="lb-dots" id="lb-dots"></div>
+</div>
+
+<script>
+const photos=[
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/cvc3/1.jpeg",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/cvc3/2.jpeg",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/cvc3/3.jpeg",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/cvc3/WhatsApp%20Image%202026-03-16%20at%2001.10.16.jpeg",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/cvc3/WhatsApp%20Image%202026-03-16%20at%2001.10.17%20(1).jpeg",
+  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/cvc3/WhatsApp%20Image%202026-03-16%20at%2001.10.17.jpeg"
+];
+
+let lbIdx=0;
+
+photos.forEach((src,i)=>{
+  const cell=document.getElementById('ph'+i);
+  const img=new Image();
+  img.onload=()=>{
+    cell.innerHTML=`<img src="${src}" alt="Foto ${i+1}"><div class="photo-overlay"><span class="photo-num">${String(i+1).padStart(2,'0')} / ${photos.length}</span></div><div class="zoom-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>`;
+    cell.onclick=()=>openLb(i);
+  };
+  img.onerror=()=>{
+    cell.innerHTML=`<span style="font-size:11px;color:rgba(200,169,110,0.4);text-align:center;">Foto ${i+1}</span>`;
+    cell.onclick=()=>openLb(i);
+  };
+  img.src=src;
+});
+
+function buildDots(){
+  const d=document.getElementById('lb-dots');
+  d.innerHTML=photos.map((_,i)=>`<div class="lb-dot${i===lbIdx?' active':''}" onclick="lbGo(${i})"></div>`).join('');
+}
+function updateDots(){
+  document.querySelectorAll('.lb-dot').forEach((d,i)=>d.classList.toggle('active',i===lbIdx));
+}
+function openLb(i){
+  lbIdx=i;
+  document.getElementById('lb-img').src=photos[i];
+  document.getElementById('lb-cur').textContent=i+1;
+  document.getElementById('lb-tot').textContent=photos.length;
+  buildDots();
+  document.getElementById('lb').classList.add('open');
+}
+function closeLb(){document.getElementById('lb').classList.remove('open');}
+function lbNav(dir){
+  lbIdx=(lbIdx+dir+photos.length)%photos.length;
+  document.getElementById('lb-img').src=photos[lbIdx];
+  document.getElementById('lb-cur').textContent=lbIdx+1;
+  updateDots();
+}
+function lbGo(i){
+  lbIdx=i;
+  document.getElementById('lb-img').src=photos[i];
+  document.getElementById('lb-cur').textContent=i+1;
+  updateDots();
+}
+document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)closeLb();});
+
+const T={
+  de:{hdr:'Fo<span style="color:#c8a96e">tos</span>',sub:'FADWA GHOUNBAZ · Persönliche Fotos',st1:'Fotos',st2:'Album',st3:'Jahr',st4:'Qualität',sect:'Persönliche <span style="color:#c8a96e">Galerie</span>'},
+  en:{hdr:'Pho<span style="color:#c8a96e">tos</span>',sub:'FADWA GHOUNBAZ · Personal Photos',st1:'Photos',st2:'Album',st3:'Year',st4:'Quality',sect:'Personal <span style="color:#c8a96e">Gallery</span>'}
+};
+function setLang(lang,btn){
+  const d=T[lang];
+  document.getElementById('hdr-t').innerHTML=d.hdr;
+  document.getElementById('hdr-s').textContent=d.sub;
+  document.getElementById('st1').textContent=d.st1;
+  document.getElementById('st2').textContent=d.st2;
+  document.getElementById('st3').textContent=d.st3;
+  document.getElementById('st4').textContent=d.st4;
+  document.getElementById('sec-t').innerHTML=d.sect;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
