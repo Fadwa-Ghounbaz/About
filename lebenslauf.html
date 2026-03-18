@@ -1,4 +1,3 @@
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -15,7 +14,6 @@ body,html{background:#1a1a2e;}
 .lang-bar{display:flex;gap:6px;margin-left:auto;}
 .lang-btn{padding:4px 13px;border-radius:20px;font-size:11px;font-weight:500;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);background:transparent;cursor:pointer;letter-spacing:0.05em;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
 .lang-btn.active{background:#c8a96e;border-color:#c8a96e;color:#1a1a2e;}
-.lang-btn:hover:not(.active){border-color:#c8a96e;color:#c8a96e;}
 
 /* BODY */
 .cv-body{padding:32px 36px;max-width:900px;margin:0 auto;}
@@ -54,10 +52,8 @@ body,html{background:#1a1a2e;}
 .tl-bullets li{font-size:12px;color:rgba(255,255,255,0.58);line-height:1.6;padding-left:14px;position:relative;margin-bottom:2px;}
 .tl-bullets li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:1px;background:#c8a96e;}
 
-/* SKILLS GRID */
-.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+/* SKILLS */
 .skill-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;}
-.skill-card-title{font-size:11px;color:#c8a96e;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
 .skill-item{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
 .skill-name{font-size:12px;color:rgba(255,255,255,0.7);}
 .skill-bar-wrap{width:80px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;}
@@ -68,7 +64,6 @@ body,html{background:#1a1a2e;}
 .lang-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;}
 .lang-name{font-size:13px;color:#fff;font-weight:500;}
 .lang-level{font-size:11px;color:#c8a96e;font-weight:500;}
-.lang-flag{font-size:18px;}
 
 /* TAGS */
 .tags{display:flex;flex-wrap:wrap;gap:8px;}
@@ -81,16 +76,12 @@ body,html{background:#1a1a2e;}
 .cert-badges{display:flex;flex-wrap:wrap;gap:6px;}
 .cert-badge{font-size:11px;padding:3px 10px;border-radius:12px;background:rgba(200,169,110,0.12);color:#c8a96e;border:1px solid rgba(200,169,110,0.25);}
 
-/* TWO COL */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-
-/* FOOTER */
 .cv-footer{text-align:center;padding:20px;color:rgba(255,255,255,0.2);font-size:11px;border-top:1px solid rgba(200,169,110,0.1);margin-top:8px;}
 </style>
 
 <div class="cv-page" id="cv-page">
 
-<!-- HEADER -->
 <div class="cv-header">
   <button class="back-btn" onclick="if(window.parent)window.parent.postMessage('goBack','*');"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></button>
   <div class="hdr-title" id="hdr-title">Lebens<span>lauf</span></div>
@@ -100,15 +91,13 @@ body,html{background:#1a1a2e;}
   </div>
 </div>
 
-<!-- BODY -->
 <div class="cv-body">
 
-  <!-- PROFILE -->
   <div class="profile-card">
     <img class="profile-img" src="https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/Argentina/b/unnamed.png" alt="Fadwa Ghounbaz"/>
     <div class="profile-info">
       <div class="profile-name">FADWA <span>GHOUNBAZ</span></div>
-      <div class="profile-sub" id="p-sub">Technikerin für Hochbau · Bauingenieurwesen</div>
+      <div class="profile-sub" id="p-sub">Technikerin im Hochbau · Bauingenieurwesen</div>
       <div class="profile-meta">
         <div class="meta-item"><svg fill="none" stroke="#c8a96e" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span id="p-birth">01.10.1999, Casablanca</span></div>
         <div class="meta-item"><svg fill="none" stroke="#c8a96e" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg><span>Casablanca, Marokko</span></div>
@@ -118,7 +107,6 @@ body,html{background:#1a1a2e;}
     </div>
   </div>
 
-  <!-- BERUFSERFAHRUNG -->
   <div class="section">
     <div class="section-title">
       <div class="st-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.6" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
@@ -131,8 +119,11 @@ body,html{background:#1a1a2e;}
         <div class="tl-content">
           <div class="tl-period">06/2025 – 12/2025</div>
           <div class="tl-company">OUALI BUILD GmbH, Salé</div>
-          <div class="tl-role" id="r1">Technikerin für Hochbau</div>
-          <ul class="tl-bullets"><li id="r1b1">Unterstützung bei der Planung und Überwachung von Bauprojekten</li><li id="r1b2">Erstellung und Kontrolle von technischen Plänen und Mengenbezeichnungen</li></ul>
+          <div class="tl-role" id="r1">Technikerin im Hochbau</div>
+          <ul class="tl-bullets">
+            <li id="r1b1">Unterstützung bei der Planung und Überwachung von Bauprojekten</li>
+            <li id="r1b2">Erstellung und Kontrolle von technischen Plänen und Mengenermittlungen</li>
+          </ul>
         </div>
       </div>
       <div class="tl-item">
@@ -140,8 +131,10 @@ body,html{background:#1a1a2e;}
         <div class="tl-content">
           <div class="tl-period">01/2025 – 04/2025</div>
           <div class="tl-company">OCM INGENIERIE GmbH, Casablanca</div>
-          <div class="tl-role" id="r2">Design Büro</div>
-          <ul class="tl-bullets"><li id="r2b1">Ausbreitung und Prüfung von Bauplänen und technischen Zeichnungen</li></ul>
+          <div class="tl-role" id="r2">Design-Büro</div>
+          <ul class="tl-bullets">
+            <li id="r2b1">Ausarbeitung und Prüfung von Bauplänen und technischen Zeichnungen</li>
+          </ul>
         </div>
       </div>
       <div class="tl-item">
@@ -149,8 +142,12 @@ body,html{background:#1a1a2e;}
         <div class="tl-content">
           <div class="tl-period">09/2023 – 12/2024</div>
           <div class="tl-company">COTRO GmbH, Rabat</div>
-          <div class="tl-role" id="r3">Spezialist für Bauingenieurwesen</div>
-          <ul class="tl-bullets"><li id="r3b1">Koordination zwischen verschiedenen Abteilungen und externen Auftragnehmern</li><li id="r3b2">Berechnung des Metermaßes und Planung der Baustelle</li><li id="r3b3">Gewährleistung der Umsetzung und Einhaltung der Sicherheitsvorschriften</li></ul>
+          <div class="tl-role" id="r3">Spezialistin für Bauingenieurwesen</div>
+          <ul class="tl-bullets">
+            <li id="r3b1">Koordination zwischen verschiedenen Abteilungen und externen Auftragnehmern</li>
+            <li id="r3b2">Berechnung von Mengen und Planung der Baustelle</li>
+            <li id="r3b3">Sicherstellung der Einhaltung der Sicherheitsvorschriften</li>
+          </ul>
         </div>
       </div>
       <div class="tl-item">
@@ -158,23 +155,28 @@ body,html{background:#1a1a2e;}
         <div class="tl-content">
           <div class="tl-period">06/2022 – 12/2022</div>
           <div class="tl-company">RACHID ROXY GmbH, Casablanca</div>
-          <div class="tl-role" id="r4">Verwaltungsassistent</div>
-          <ul class="tl-bullets"><li id="r4b1">Physischer und telefonischer Empfang von Kunden</li><li id="r4b2">Erfassen von Dokumenten und Ablegen von Dateien</li></ul>
+          <div class="tl-role" id="r4">Verwaltungsassistentin</div>
+          <ul class="tl-bullets">
+            <li id="r4b1">Persönlicher und telefonischer Empfang von Kunden</li>
+            <li id="r4b2">Erfassung von Dokumenten und Ablage von Dateien</li>
+          </ul>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
         <div class="tl-content">
           <div class="tl-period">04/2021 – 05/2022</div>
-          <div class="tl-company">Grandstravaux Marocoitalien GmbH, Casablanca</div>
-          <div class="tl-role" id="r5">Technischer Assistent</div>
-          <ul class="tl-bullets"><li id="r5b1">Überwachung und Kontrolle von Bauprojekten zur Einhaltung von Zeitplänen und Budgets</li><li id="r5b2">Erstellung von technischen Zeichnungen und Plänen für Bauprojekte</li></ul>
+          <div class="tl-company">Grandstrauv Marocitalien GmbH, Casablanca</div>
+          <div class="tl-role" id="r5">Technische Assistentin</div>
+          <ul class="tl-bullets">
+            <li id="r5b1">Überwachung und Kontrolle von Bauprojekten hinsichtlich Zeitplänen und Budgets</li>
+            <li id="r5b2">Erstellung von technischen Zeichnungen und Bauplänen</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- AUSBILDUNG -->
   <div class="section">
     <div class="section-title">
       <div class="st-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg></div>
@@ -203,9 +205,7 @@ body,html{background:#1a1a2e;}
     </div>
   </div>
 
-  <!-- SPRACHEN + SKILLS -->
   <div class="two-col">
-    <!-- SPRACHEN -->
     <div class="section">
       <div class="section-title">
         <div class="st-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg></div>
@@ -214,28 +214,27 @@ body,html{background:#1a1a2e;}
       </div>
       <div class="lang-grid">
         <div class="lang-card"><div><div class="lang-name" id="l-ar">Arabisch</div><div class="lang-level" id="ll-ar">Muttersprache</div></div><div style="font-size:20px;">🇲🇦</div></div>
-        <div class="lang-card"><div><div class="lang-name" id="l-de">Deutsch</div><div class="lang-level">B2 Niveau</div></div><div style="font-size:20px;">🇩🇪</div></div>
+        <div class="lang-card"><div><div class="lang-name" id="l-de">Deutsch</div><div class="lang-level">B2 (Telc)</div></div><div style="font-size:20px;">🇩🇪</div></div>
         <div class="lang-card"><div><div class="lang-name" id="l-fr">Französisch</div><div class="lang-level" id="ll-fr">Gute Kenntnisse</div></div><div style="font-size:20px;">🇫🇷</div></div>
         <div class="lang-card"><div><div class="lang-name" id="l-en">Englisch</div><div class="lang-level" id="ll-en">Grundkenntnisse</div></div><div style="font-size:20px;">🇬🇧</div></div>
       </div>
     </div>
 
-    <!-- IT KENNTNISSE -->
     <div class="section">
       <div class="section-title">
         <div class="st-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.6" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
         <h2 id="s-it"><span>IT</span>-Kenntnisse</h2>
         <div class="gold-rule"></div>
       </div>
-      <div class="skill-card" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;">
-        <div class="skill-item"><span class="skill-name">MS Word / Excel / PPT</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
-        <div class="skill-item"><span class="skill-name">AutoCAD</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
-        <div class="skill-item"><span class="skill-name" id="sk-fv">Flächen & Volumenber.</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></div>
+      <div class="skill-card">
+        <div class="skill-item"><span class="skill-name">Ms Office Programme</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">AutoCad 2D</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Autodesk Civil 3D</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+        <div class="skill-item"><span class="skill-name">Revit</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
       </div>
     </div>
   </div>
 
-  <!-- FÄHIGKEITEN + INTERESSEN -->
   <div class="two-col">
     <div class="section">
       <div class="section-title">
@@ -270,10 +269,9 @@ body,html{background:#1a1a2e;}
     </div>
   </div>
 
-  <!-- ZERTIFIKATE -->
   <div class="section">
     <div class="section-title">
-      <div class="st-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.6" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg></div>
+      <div class="st-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.6" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"/></svg></div>
       <h2 id="s-cert"><span>Zertifikate</span> & Weiterbildung</h2>
       <div class="gold-rule"></div>
     </div>
@@ -295,14 +293,14 @@ body,html{background:#1a1a2e;}
 
 </div>
 
-<div class="cv-footer">Casablanca, 24.02.2026 · Fadwa Ghounbaz</div>
+<div class="cv-footer">Casablanca, 18.03.2026 · Fadwa Ghounbaz</div>
 </div>
 
 <script>
 const T={
   de:{
     hdr:'Lebens<span style="color:#c8a96e">lauf</span>',
-    psub:'Technikerin für Hochbau · Bauingenieurwesen',
+    psub:'Technikerin im Hochbau · Bauingenieurwesen',
     pbirth:'01.10.1999, Casablanca',
     sexp:'<span style="color:#c8a96e">Berufs</span>erfahrung',
     sedu:'<span style="color:#c8a96e">Aus</span>bildung',
@@ -311,15 +309,14 @@ const T={
     sskills:'<span style="color:#c8a96e">Fähig</span>keiten',
     sint:'<span style="color:#c8a96e">Inter</span>essen',
     scert:'<span style="color:#c8a96e">Zertifikate</span> & Weiterbildung',
-    r1:'Technikerin für Hochbau',r1b1:'Unterstützung bei der Planung und Überwachung von Bauprojekten',r1b2:'Erstellung und Kontrolle von technischen Plänen und Mengenbezeichnungen',
-    r2:'Design Büro',r2b1:'Ausbreitung und Prüfung von Bauplänen und technischen Zeichnungen',
-    r3:'Spezialist für Bauingenieurwesen',r3b1:'Koordination zwischen verschiedenen Abteilungen und externen Auftragnehmern',r3b2:'Berechnung des Metermaßes und Planung der Baustelle',r3b3:'Gewährleistung der Umsetzung und Einhaltung der Sicherheitsvorschriften',
-    r4:'Verwaltungsassistent',r4b1:'Physischer und telefonischer Empfang von Kunden',r4b2:'Erfassen von Dokumenten und Ablegen von Dateien',
-    r5:'Technischer Assistent',r5b1:'Überwachung und Kontrolle von Bauprojekten zur Einhaltung von Zeitplänen und Budgets',r5b2:'Erstellung von technischen Zeichnungen und Plänen für Bauprojekte',
+    r1:'Technikerin im Hochbau',r1b1:'Unterstützung bei der Planung und Überwachung von Bauprojekten',r1b2:'Erstellung und Kontrolle von technischen Plänen und Mengenermittlungen',
+    r2:'Design-Büro',r2b1:'Ausarbeitung und Prüfung von Bauplänen und technischen Zeichnungen',
+    r3:'Spezialistin für Bauingenieurwesen',r3b1:'Koordination zwischen verschiedenen Abteilungen und externen Auftragnehmern',r3b2:'Berechnung von Mengen und Planung der Baustelle',r3b3:'Sicherstellung der Einhaltung der Sicherheitsvorschriften',
+    r4:'Verwaltungsassistentin',r4b1:'Persönlicher und telefonischer Empfang von Kunden',r4b2:'Erfassung von Dokumenten und Ablage von Dateien',
+    r5:'Technische Assistentin',r5b1:'Überwachung und Kontrolle von Bauprojekten hinsichtlich Zeitplänen und Budgets',r5b2:'Erstellung von technischen Zeichnungen und Bauplänen',
     edu1n:'Fachinstitut für Bauwesen, Casablanca',edu1d:'Fachdiplom – Techniker im Bauwesen',edu1b:'Ein auf Großarbeiten spezialisierter Techniker',
     edu2n:'Abdellah El Mediouni Gymnasium, Casablanca',edu2d:'Abitur – Baccalauréat',edu2b:'Schwerpunkt: Physikwissenschaften',
     lar:'Arabisch',llar:'Muttersprache',lde:'Deutsch',lfr:'Französisch',llfr:'Gute Kenntnisse',len:'Englisch',llen:'Grundkenntnisse',
-    skfv:'Flächen & Volumenber.',
     tags:['Teamfähigkeit','Kommunikationsstärke','Zuverlässigkeit','Belastbarkeit','Pünktlichkeit','Eigeninitiative','Lernbereitschaft'],
     ints:['Technisches Zeichnen','Modellierung','Fachliteratur','Reisen','Kulturen entdecken','Sport']
   },
@@ -342,7 +339,6 @@ const T={
     edu1n:'Technical Institute of Construction, Casablanca',edu1d:'Technical Diploma – Construction Technician',edu1b:'Specialist technician for large-scale works',
     edu2n:'Abdellah El Mediouni High School, Casablanca',edu2d:'Baccalauréat – High School Diploma',edu2b:'Major: Physical Sciences',
     lar:'Arabic',llar:'Native',lde:'German',lfr:'French',llfr:'Good knowledge',len:'English',llen:'Basic knowledge',
-    skfv:'Area & Volume Calc.',
     tags:['Teamwork','Communication','Reliability','Resilience','Punctuality','Initiative','Willingness to learn'],
     ints:['Technical Drawing','Modelling','Professional Literature','Travel','Discovering Cultures','Sport']
   }
@@ -377,7 +373,6 @@ function setLang(lang,btn){
   document.getElementById('ll-fr').textContent=d.llfr;
   document.getElementById('l-en').textContent=d.len;
   document.getElementById('ll-en').textContent=d.llen;
-  document.getElementById('sk-fv').textContent=d.skfv;
   document.getElementById('tags-skills').innerHTML=d.tags.map(t=>`<span class="tag">${t}</span>`).join('');
   document.getElementById('tags-int').innerHTML=d.ints.map(t=>`<span class="tag">${t}</span>`).join('');
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
