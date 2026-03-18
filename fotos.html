@@ -1,20 +1,18 @@
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
-.fpage{font-family:'DM Sans',sans-serif;background:#1a1a2e;color:#fff;}
+.fpage{font-family:'DM Sans',sans-serif;background:#1a1a2e;color:#fff;min-height:100vh;}
 .fheader{background:linear-gradient(135deg,#12122a 0%,#1e1e3a 100%);border-bottom:1px solid rgba(200,169,110,0.2);padding:22px 36px;display:flex;align-items:center;gap:16px;}
 .back-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(200,169,110,0.35);background:rgba(200,169,110,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.2s;}
 .back-btn:hover{background:rgba(200,169,110,0.2);}
 .back-btn svg{width:16px;height:16px;}
 .hdr-info{flex:1;}
-.hdr-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;}
+.hdr-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;}
 .hdr-title span{color:#c8a96e;}
 .hdr-sub{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;}
 .lang-bar{display:flex;gap:6px;}
 .lang-btn{padding:4px 13px;border-radius:20px;font-size:11px;font-weight:500;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);background:transparent;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
 .lang-btn.active{background:#c8a96e;border-color:#c8a96e;color:#1a1a2e;}
-.lang-btn:hover:not(.active){border-color:#c8a96e;color:#c8a96e;}
 
 /* STATS */
 .stats-bar{display:flex;gap:1px;background:rgba(200,169,110,0.1);border-bottom:1px solid rgba(200,169,110,0.12);}
@@ -27,18 +25,16 @@
 .sec-hdr{display:flex;align-items:center;gap:10px;margin-bottom:24px;}
 .sec-icon{width:32px;height:32px;border-radius:8px;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .sec-icon svg{width:15px;height:15px;}
-.sec-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff;}
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;}
 .sec-title span{color:#c8a96e;}
 .gold-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(200,169,110,0.3),transparent);}
 
-/* MASONRY-STYLE GRID */
+/* MASONRY-STYLE GRID - Updated for 4 photos */
 .photo-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-template-rows:auto;
-  gap:12px;
+  grid-template-columns:repeat(2, 1fr); /* Two columns for 4 photos */
+  gap:16px;
 }
-/* Big featured photo top-left */
 .photo-item{
   border-radius:12px;
   overflow:hidden;
@@ -50,6 +46,7 @@
   align-items:center;
   justify-content:center;
   transition:all 0.28s;
+  height: 280px; /* Fixed height for consistent look */
 }
 .photo-item:hover{border-color:rgba(200,169,110,0.55);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.5);}
 .photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.35s;}
@@ -62,14 +59,6 @@
 .zoom-icon svg{width:13px;height:13px;}
 .p-spinner{width:22px;height:22px;border:2px solid rgba(200,169,110,0.15);border-top-color:#c8a96e;border-radius:50%;animation:spin 0.9s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-
-/* GRID LAYOUT — varied heights for elegant look */
-.pi-0{grid-column:1;grid-row:1;height:280px;}
-.pi-1{grid-column:2;grid-row:1;height:280px;}
-.pi-2{grid-column:3;grid-row:1;height:280px;}
-.pi-3{grid-column:1;grid-row:2;height:240px;}
-.pi-4{grid-column:2;grid-row:2;height:240px;}
-.pi-5{grid-column:3;grid-row:2;height:240px;}
 
 /* LIGHTBOX */
 .lightbox{position:fixed;inset:0;background:rgba(8,8,18,0.97);z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
@@ -91,7 +80,6 @@
 
 <div class="fpage">
 
-<!-- HEADER -->
 <div class="fheader">
   <button class="back-btn"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></button>
   <div class="hdr-info">
@@ -104,15 +92,13 @@
   </div>
 </div>
 
-<!-- STATS -->
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num">6</div><div class="stat-lbl" id="st1">Fotos</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-lbl" id="st1">Fotos</div></div>
   <div class="stat"><div class="stat-num">1</div><div class="stat-lbl" id="st2">Album</div></div>
   <div class="stat"><div class="stat-num">2026</div><div class="stat-lbl" id="st3">Jahr</div></div>
   <div class="stat"><div class="stat-num">HD</div><div class="stat-lbl" id="st4">Qualität</div></div>
 </div>
 
-<!-- BODY -->
 <div class="fbody">
   <div class="sec-hdr">
     <div class="sec-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.6" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
@@ -121,32 +107,28 @@
   </div>
 
   <div class="photo-grid" id="photo-grid">
-    <div class="photo-item pi-0" id="ph0"><div class="p-spinner"></div></div>
-    <div class="photo-item pi-1" id="ph1"><div class="p-spinner"></div></div>
-    <div class="photo-item pi-2" id="ph2"><div class="p-spinner"></div></div>
-    <div class="photo-item pi-3" id="ph3"><div class="p-spinner"></div></div>
-    <div class="photo-item pi-4" id="ph4"><div class="p-spinner"></div></div>
-    <div class="photo-item pi-5" id="ph5"><div class="p-spinner"></div></div>
+    <div class="photo-item" id="ph0"><div class="p-spinner"></div></div>
+    <div class="photo-item" id="ph1"><div class="p-spinner"></div></div>
+    <div class="photo-item" id="ph2"><div class="p-spinner"></div></div>
+    <div class="photo-item" id="ph3"><div class="p-spinner"></div></div>
   </div>
 </div>
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lb">
   <div class="lb-close" onclick="closeLb()">✕</div>
   <div class="lb-img-wrap"><img id="lb-img" src="" alt="Foto"/></div>
   <div class="lb-nav">
     <button class="lb-btn" onclick="lbNav(-1)"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg></button>
-    <div class="lb-counter"><span id="lb-cur">1</span> / <span id="lb-tot">6</span></div>
+    <div class="lb-counter"><span id="lb-cur">1</span> / <span id="lb-tot">4</span></div>
     <button class="lb-btn" onclick="lbNav(1)"><svg fill="none" stroke="#c8a96e" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
   <div class="lb-dots" id="lb-dots"></div>
 </div>
 
 <script>
+// Removed the first two technical photos, leaving 4 personal photos
 const photos=[
-  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/cvc3/1.jpeg",
-  "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/cvc3/2.jpeg",
   "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/cvc3/3.jpeg",
   "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/cvc3/WhatsApp%20Image%202026-03-16%20at%2001.10.16.jpeg",
   "https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/cv/cvc/cvc2/cvc3/WhatsApp%20Image%202026-03-16%20at%2001.10.17%20(1).jpeg",
@@ -155,8 +137,10 @@ const photos=[
 
 let lbIdx=0;
 
+// Update grid loop for 4 items
 photos.forEach((src,i)=>{
   const cell=document.getElementById('ph'+i);
+  if (!cell) return; // Guard if HTML wasn't updated
   const img=new Image();
   img.onload=()=>{
     cell.innerHTML=`<img src="${src}" alt="Foto ${i+1}"><div class="photo-overlay"><span class="photo-num">${String(i+1).padStart(2,'0')} / ${photos.length}</span></div><div class="zoom-icon"><svg fill="none" stroke="#c8a96e" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>`;
