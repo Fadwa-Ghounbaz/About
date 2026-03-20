@@ -1,60 +1,50 @@
-﻿<style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
-*{box-sizing:border-box;margin:0;padding:0;}
-.wrap{font-family:'DM Sans',sans-serif;background:#1a1a2e;min-height:600px;position:relative;overflow:hidden;display:flex;}
-.photo-side{position:absolute;right:0;top:0;width:46%;height:100%;overflow:hidden;}
-.photo-side img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.fade-overlay{position:absolute;right:0;top:0;width:46%;height:100%;background:linear-gradient(to right,#1a1a2e 0%,rgba(26,26,46,0.5) 40%,transparent 70%);pointer-events:none;z-index:2;}
-.content{position:relative;z-index:3;padding:40px 40px 36px 44px;width:58%;}
-.lang-bar{display:flex;gap:7px;margin-bottom:30px;}
-.lang-btn{padding:5px 16px;border-radius:20px;font-size:11px;font-weight:500;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);background:transparent;cursor:pointer;letter-spacing:0.05em;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
-.lang-btn.active{background:#c8a96e;border-color:#c8a96e;color:#1a1a2e;}
-.lang-btn:hover:not(.active){border-color:#c8a96e;color:#c8a96e;}
-.eyebrow{font-size:10px;letter-spacing:0.2em;color:#c8a96e;text-transform:uppercase;font-weight:500;margin-bottom:10px;}
-.name-big{font-family:'Playfair Display',serif;font-size:48px;line-height:1.05;font-weight:700;color:#fff;margin-bottom:6px;}
-.name-big span{color:#c8a96e;}
-.job-title{font-size:13px;color:rgba(255,255,255,0.5);font-weight:300;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:22px;}
-.gold-line{width:38px;height:2px;background:#c8a96e;margin-bottom:18px;}
-.bio{font-size:13px;line-height:1.85;color:rgba(255,255,255,0.68);margin-bottom:20px;max-width:400px;}
-.badges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px;}
-.badge{font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.28);color:#c8a96e;letter-spacing:0.02em;}
-.contacts{display:flex;flex-direction:column;gap:9px;margin-bottom:22px;}
-.ci{display:flex;align-items:center;gap:9px;font-size:12px;color:rgba(255,255,255,0.62);}
-.ci-icon{width:26px;height:26px;border-radius:50%;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ci-icon svg{width:12px;height:12px;}
-.linkedin-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:24px;background:rgba(10,102,194,0.15);border:1px solid rgba(10,102,194,0.4);color:rgba(255,255,255,0.75);font-size:12px;font-weight:500;text-decoration:none;cursor:pointer;transition:all 0.2s;margin-bottom:26px;}
-.linkedin-btn:hover{background:rgba(10,102,194,0.3);border-color:#0a66c2;color:#fff;}
-.linkedin-btn svg{width:15px;height:15px;fill:#0a66c2;}
-.nav-icons{display:flex;gap:10px;flex-wrap:wrap;}
-.nav-icon{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;transition:all 0.22s;text-decoration:none;border:none;background:none;}
-.nav-icon:hover .ni-circle{background:rgba(200,169,110,0.22);border-color:#c8a96e;transform:translateY(-3px);}
-.nav-icon:hover .ni-label{color:#c8a96e;}
-.ni-circle{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;transition:all 0.22s;}
-.ni-circle svg{width:20px;height:20px;}
-.ni-label{font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.05em;text-align:center;transition:color 0.22s;font-weight:500;}
-.ca1{position:absolute;bottom:0;left:0;width:100px;height:100px;border-left:2px solid rgba(200,169,110,0.18);border-bottom:2px solid rgba(200,169,110,0.18);pointer-events:none;z-index:4;}
-.ca2{position:absolute;top:0;right:0;width:70px;height:70px;border-right:1px solid rgba(200,169,110,0.12);border-top:1px solid rgba(200,169,110,0.12);pointer-events:none;z-index:4;}
-
-/* PAGE SYSTEM */
-.page{display:none;position:absolute;inset:0;background:#1a1a2e;z-index:10;overflow-y:auto;}
-.page.active{display:flex;flex-direction:column;}
-.page-header{display:flex;align-items:center;gap:14px;padding:28px 40px 20px;border-bottom:1px solid rgba(200,169,110,0.15);}
-.back-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(200,169,110,0.35);background:rgba(200,169,110,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;flex-shrink:0;}
-.back-btn:hover{background:rgba(200,169,110,0.2);border-color:#c8a96e;}
-.back-btn svg{width:16px;height:16px;}
-.page-title{font-family:'Playfair Display',serif;font-size:26px;color:#fff;font-weight:700;}
-.page-title span{color:#c8a96e;}
-.page-body{padding:32px 40px;flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
-.coming-soon{text-align:center;}
-.coming-icon{width:70px;height:70px;border-radius:50%;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.25);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
-.coming-icon svg{width:30px;height:30px;}
-.coming-soon h3{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:8px;}
-.coming-soon p{font-size:13px;color:rgba(255,255,255,0.45);max-width:260px;line-height:1.7;}
-.gold-dot{width:6px;height:6px;border-radius:50%;background:#c8a96e;display:inline-block;margin:0 4px;}
-</style>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fadwa Ghounbaz | Portfolio</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0;}
+    .wrap{font-family:'DM Sans',sans-serif;background:#1a1a2e;min-height:600px;position:relative;overflow:hidden;display:flex;}
+    .photo-side{position:absolute;right:0;top:0;width:46%;height:100%;overflow:hidden;}
+    .photo-side img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+    .fade-overlay{position:absolute;right:0;top:0;width:46%;height:100%;background:linear-gradient(to right,#1a1a2e 0%,rgba(26,26,46,0.5) 40%,transparent 70%);pointer-events:none;z-index:2;}
+    .content{position:relative;z-index:3;padding:40px 40px 36px 44px;width:58%;}
+    .lang-bar{display:flex;gap:7px;margin-bottom:30px;}
+    .lang-btn{padding:5px 16px;border-radius:20px;font-size:11px;font-weight:500;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);background:transparent;cursor:pointer;letter-spacing:0.05em;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
+    .lang-btn.active{background:#c8a96e;border-color:#c8a96e;color:#1a1a2e;}
+    .lang-btn:hover:not(.active){border-color:#c8a96e;color:#c8a96e;}
+    .eyebrow{font-size:10px;letter-spacing:0.2em;color:#c8a96e;text-transform:uppercase;font-weight:500;margin-bottom:10px;}
+    .name-big{font-family:'Playfair Display',serif;font-size:48px;line-height:1.05;font-weight:700;color:#fff;margin-bottom:6px;}
+    .name-big span{color:#c8a96e;}
+    .job-title{font-size:13px;color:rgba(255,255,255,0.5);font-weight:300;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:22px;}
+    .gold-line{width:38px;height:2px;background:#c8a96e;margin-bottom:18px;}
+    .bio{font-size:13px;line-height:1.85;color:rgba(255,255,255,0.68);margin-bottom:20px;max-width:400px;}
+    .badges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px;}
+    .badge{font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.28);color:#c8a96e;letter-spacing:0.02em;}
+    .contacts{display:flex;flex-direction:column;gap:9px;margin-bottom:22px;}
+    .ci{display:flex;align-items:center;gap:9px;font-size:12px;color:rgba(255,255,255,0.62);}
+    .ci-icon{width:26px;height:26px;border-radius:50%;background:rgba(200,169,110,0.12);border:1px solid rgba(200,169,110,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .ci-icon svg{width:12px;height:12px;}
+    .linkedin-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:24px;background:rgba(10,102,194,0.15);border:1px solid rgba(10,102,194,0.4);color:rgba(255,255,255,0.75);font-size:12px;font-weight:500;text-decoration:none;cursor:pointer;transition:all 0.2s;margin-bottom:26px;}
+    .linkedin-btn:hover{background:rgba(10,102,194,0.3);border-color:#0a66c2;color:#fff;}
+    .linkedin-btn svg{width:15px;height:15px;fill:#0a66c2;}
+    .nav-icons{display:flex;gap:10px;flex-wrap:wrap;}
+    .nav-icon{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;transition:all 0.22s;text-decoration:none;border:none;background:none;}
+    .nav-icon:hover .ni-circle{background:rgba(200,169,110,0.22);border-color:#c8a96e;transform:translateY(-3px);}
+    .nav-icon:hover .ni-label{color:#c8a96e;}
+    .ni-circle{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;transition:all 0.22s;}
+    .ni-circle svg{width:20px;height:20px;}
+    .ni-label{font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.05em;text-align:center;transition:color 0.22s;font-weight:500;}
+    .ca1{position:absolute;bottom:0;left:0;width:100px;height:100px;border-left:2px solid rgba(200,169,110,0.18);border-bottom:2px solid rgba(200,169,110,0.18);pointer-events:none;z-index:4;}
+    .ca2{position:absolute;top:0;right:0;width:70px;height:70px;border-right:1px solid rgba(200,169,110,0.12);border-top:1px solid rgba(200,169,110,0.12);pointer-events:none;z-index:4;}
+    </style>
+</head>
+<body>
 
 <div id="app">
-
 <div class="wrap" id="home">
   <div class="photo-side">
     <img src="https://pub-6e8f40d40c774f2385ec6bc4ab934b7b.r2.dev/Argentina/b/15.03.2026_22.47.07_REC.png" alt="Fadwa Ghounbaz"/>
@@ -67,12 +57,12 @@
     </div>
     <div class="eyebrow" id="eyebrow">Bewerberin</div>
     <div class="name-big">FADWA <span>GHOUNBAZ</span></div>
-    <div class="job-title" id="job">Bauingenieurwesen · Duales Studium</div>
+    <div class="job-title" id="job">Bauingenieurwesen · Ausbildung</div>
     <div class="gold-line"></div>
-    <div class="bio" id="bio">Motivierte Bewerberin mit ausgeprägtem Interesse am Bauingenieurwesen. Ich strebe ein duales Studium an, um theoretisches Wissen mit praktischer Erfahrung zu verbinden.</div>
+    <div class="bio" id="bio">Motivierte Bewerberin mit ausgeprägtem Interesse am Bauingenieurwesen. Ich strebe eine Ausbildung an, um theoretisches Wissen mit praktischer Erfahrung zu verbinden.</div>
     <div class="badges" id="badges">
       <span class="badge">Bauingenieurwesen</span>
-      <span class="badge">Duales Studium</span>
+      <span class="badge">Ausbildung</span>
       <span class="badge">Marokko</span>
     </div>
     <div class="contacts">
@@ -89,7 +79,7 @@
         <span>+212 602 429 142</span>
       </div>
     </div>
-    <a class="linkedin-btn" href="https://my.count" target="_blank">
+    <a class="linkedin-btn" href="https://linkedin.com/in/fadwa-ghounbaz" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       LinkedIn
     </a>
@@ -114,13 +104,30 @@
   </div>
   <div class="ca1"></div>
   <div class="ca2"></div>
-
 </div>
 
 <script>
 const T={
-  de:{eyebrow:'Bewerberin',job:'Bauingenieurwesen · Duales Studium',bio:'Motivierte Bewerberin mit ausgeprägtem Interesse am Bauingenieurwesen. Ich strebe ein duales Studium an, um theoretisches Wissen mit praktischer Erfahrung zu verbinden.',badges:['Bauingenieurwesen','Duales Studium','Marokko'],cv:'Lebenslauf',cert:'Zertifikate',proj:'Projekte',photos:'Fotos'},
-  en:{eyebrow:'Applicant',job:'Civil Engineering · Dual Study Program',bio:'Motivated applicant with a strong interest in civil engineering, seeking a dual study program to combine theoretical knowledge with hands-on practical experience.',badges:['Civil Engineering','Dual Study','Morocco'],cv:'Resume',cert:'Certificates',proj:'Projects',photos:'Photos'}
+  de:{
+    eyebrow:'Bewerberin',
+    job:'Bauingenieurwesen · Ausbildung',
+    bio:'Motivierte Bewerberin mit ausgeprägtem Interesse am Bauingenieurwesen. Ich streبه eine Ausbildung an, um theoretisches Wissen mit praktischer Erfahrung zu verbinden.',
+    badges:['Bauingenieurwesen','Ausbildung','Marokko'],
+    cv:'Lebenslauf',
+    cert:'Zertifikate',
+    proj:'Projekte',
+    photos:'Fotos'
+  },
+  en:{
+    eyebrow:'Applicant',
+    job:'Civil Engineering · Apprenticeship',
+    bio:'Motivated applicant with a strong interest in civil engineering, seeking an apprenticeship to combine theoretical knowledge with hands-on practical experience.',
+    badges:['Civil Engineering','Apprenticeship','Morocco'],
+    cv:'Resume',
+    cert:'Certificates',
+    proj:'Projects',
+    photos:'Photos'
+  }
 };
 
 let currentLang='de';
@@ -140,3 +147,6 @@ function setLang(lang,btn){
   btn.classList.add('active');
 }
 </script>
+
+</body>
+</html>
